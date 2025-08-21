@@ -111,3 +111,6 @@ Helpful links discovered throughout this book.
 - [json:api](https://jsonapi.org/)
 - [jsend](https://github.com/omniti-labs/jsend)
 - [Go Method Pointer vs. Value Receivers](https://medium.com/globant/go-method-receiver-pointer-vs-value-ffc5ab7acdb)
+- [PostgreSQL](https://www.postgresql.org/)
+- [PostgreSQL Extensions](https://www.postgresql.org/docs/current/contrib.html)
+- [Tune PostgreSQL for Memory](https://www.enterprisedb.com/postgres-tutorials/how-tune-postgresql-memory)
