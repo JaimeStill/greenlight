@@ -1,0 +1,35 @@
+# TLS certs
+tls/
+
+# PostgreSQL data directory
+.data/
+
+# Go binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go vendor directory
+vendor/
+
+# Dependency directories
+go.sum
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db

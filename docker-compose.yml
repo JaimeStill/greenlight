@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: greenlight-postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
+      - ./sql:/opt/sql:ro
+    restart: unless-stopped
