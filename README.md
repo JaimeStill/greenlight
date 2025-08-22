@@ -114,3 +114,4 @@ Helpful links discovered throughout this book.
 - [PostgreSQL](https://www.postgresql.org/)
 - [PostgreSQL Extensions](https://www.postgresql.org/docs/current/contrib.html)
 - [Tune PostgreSQL for Memory](https://www.enterprisedb.com/postgres-tutorials/how-tune-postgresql-memory)
+- [pq Go PostgreSQL Driver](https://github.com/lib/pq)
