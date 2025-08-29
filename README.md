@@ -100,10 +100,6 @@ Test the infrastructure:
 docker exec -it greenlight-postgres psql -U greenlight -d greenlight
 ```
 
-```sql
-SELECT current_user;
-```
-
 ```
 greenlight=> SELECT current_user;
  current_user
