@@ -199,6 +199,22 @@ docker compose down -v
 sudo rm -rf .data/
 ```
 
+## Testing Race Conditions
+
+The update endpoint protects update operations from race conditions by ensuring the version number of both the provided record and the record being updated in the database match. You can test this behavior using [`xargs`](https://man7.org/linux/man-pages/man1/xargs.1.html) as follows:
+
+```sh
+xargs -I % -P8 curl -X PATCH -d '{"runtime": "97 mins"}' "localhost:5000/v1/movies/5" < <(printf '%s\n' {1..8})
+{"movie":{"id":5,"created_at":"2025-08-30T11:05:15Z","title":"The Breakfast Club","year":1985,"runtime":"97 mins","genres":["drama"],"version":11}}
+{"movie":{"id":5,"created_at":"2025-08-30T11:05:15Z","title":"The Breakfast Club","year":1985,"runtime":"97 mins","genres":["drama"],"version":12}}
+{"error":"unable to update the record due to an edit conflict, please try again"}
+{"error":"unable to update the record due to an edit conflict, please try again"}
+{"movie":{"id":5,"created_at":"2025-08-30T11:05:15Z","title":"The Breakfast Club","year":1985,"runtime":"97 mins","genres":["drama"],"version":13}}
+{"error":"unable to update the record due to an edit conflict, please try again"}
+{"error":"unable to update the record due to an edit conflict, please try again"}
+{"error":"unable to update the record due to an edit conflict, please try again"}
+```
+
 ## References
 
 Helpful links discovered throughout this book.
@@ -218,3 +234,6 @@ Helpful links discovered throughout this book.
 - [golang-migrate](https://github.com/golang-migrate/migrate)
 - [PostgreSQL Data Types](https://www.postgresql.org/docs/current/datatype.html)
 - [Decoupling Database Migrations from Server Startup](https://pythonspeed.com/articles/schema-migrations-server-startup/)
+- [PostgreSQL UUID Type](https://www.postgresql.org/docs/current/datatype-uuid.html)
+- [PostgreSQL UUID Functions](https://www.postgresql.org/docs/current/functions-uuid.html)
+- [Working with PostgreSQL UUIDs](https://neon.com/postgresql/postgresql-tutorial/postgresql-uuid)
